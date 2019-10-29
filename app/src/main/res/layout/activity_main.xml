@@ -16,6 +16,12 @@
             android:layout_height="wrap_content"
             android:text="Normal - Single" />
 
+        <Button
+            android:id="@+id/btn_normal_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Normal - Camera only" />
+
 
         <Button
             android:id="@+id/btn_normal_multi"

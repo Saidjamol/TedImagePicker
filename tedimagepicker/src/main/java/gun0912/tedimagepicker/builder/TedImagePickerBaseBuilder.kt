@@ -56,7 +56,8 @@ open class TedImagePickerBaseBuilder<out B : TedImagePickerBaseBuilder<B>>(
     internal var minCountMessage: String? = null,
     @StringRes
     internal var minCountMessageResId: Int = R.string.ted_image_picker_min_count,
-    internal var showZoomIndicator: Boolean = true
+    internal var showZoomIndicator: Boolean = true,
+    internal var openCameraDirectly: Boolean = false
 ) : Parcelable {
 
 
@@ -116,7 +117,7 @@ open class TedImagePickerBaseBuilder<out B : TedImagePickerBaseBuilder<B>>(
     }
 
     fun image(): B = mediaType(MediaType.IMAGE)
-    
+
     fun video(): B = mediaType(MediaType.VIDEO)
 
     fun cameraTileBackground(@ColorRes cameraTileBackgroundResId: Int): B {
@@ -131,6 +132,11 @@ open class TedImagePickerBaseBuilder<out B : TedImagePickerBaseBuilder<B>>(
 
     fun showCameraTile(show: Boolean): B {
         this.showCameraTile = show
+        return this as B
+    }
+
+    fun openCameraDirectly(openCamera: Boolean = false): B {
+        this.openCameraDirectly = openCamera
         return this as B
     }
 

@@ -72,6 +72,7 @@ internal class TedImagePickerActivity : AppCompatActivity() {
         setupButton()
         loadMedia()
 
+        if (builder.openCameraDirectly) onCameraTileClick()
     }
 
     private fun setupToolbar() {
@@ -104,9 +105,13 @@ internal class TedImagePickerActivity : AppCompatActivity() {
         with(binding) {
             buttonGravity = builder.buttonGravity
             buttonText = builder.buttonText ?: getString(builder.buttonTextResId)
-            buttonTextColor = ContextCompat.getColor(this@TedImagePickerActivity, builder.buttonTextColorResId)
+            buttonTextColor =
+                ContextCompat.getColor(this@TedImagePickerActivity, builder.buttonTextColorResId)
             buttonBackground =
-                ContextCompat.getDrawable(this@TedImagePickerActivity, builder.buttonBackgroundResId)
+                ContextCompat.getDrawable(
+                    this@TedImagePickerActivity,
+                    builder.buttonBackgroundResId
+                )
         }
 
         setupButtonVisibility()
@@ -265,6 +270,10 @@ internal class TedImagePickerActivity : AppCompatActivity() {
                             loadMedia(true)
                             onMediaClick(uri)
                         }
+                } else {
+                    if (builder.openCameraDirectly) {
+                        finish()
+                    }
                 }
             }
     }

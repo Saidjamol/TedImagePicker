@@ -27,10 +27,18 @@ class MainActivity : AppCompatActivity() {
 
         setNormalSingleButton()
         setNormalMultiButton()
+        setNormalCameraOnly()
         setRxSingleButton()
         setRxMultiButton()
     }
 
+    private fun setNormalCameraOnly() {
+        binding.btnNormalCamera.setOnClickListener {
+            TedImagePicker.with(this)
+                .openCameraDirectly(true)
+                .start { uri -> showSingleImage(uri) }
+        }
+    }
 
     private fun setNormalSingleButton() {
         binding.btnNormalSingle.setOnClickListener {
